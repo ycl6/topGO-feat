@@ -1,0 +1,45 @@
+import(methods, BiocGenerics, Biobase, AnnotationDbi, graph, GO.db)
+
+importFrom(SparseM, t)
+
+importFrom(lattice, densityplot, xyplot)
+importFrom("matrixStats", "rowMins", "rowMaxs")
+
+importFrom("grDevices", "dev.off", "heat.colors", "pdf", "postscript")
+importFrom("graphics", "legend", "par")
+importFrom("stats", "fisher.test", "ks.test", "pt", "t.test")
+importFrom("utils", "read.delim", "write.table")
+importFrom("DBI", "dbGetQuery")
+
+exportClasses(topGOdata, topGOresult, groupStats,
+              classicCount, classicScore, classicExpr,
+              weight01Count, weight01Score, weight01Expr,
+              elimCount, elimScore, elimExpr,
+              leaCount, leaScore, leaExpr,
+              weightCount, pC, parentChild)
+
+exportMethods(initialize, description, ontology, allGenes, feasible, graph,
+              geneSelectionFun, "description<-", "ontology<-", "feasible<-", "graph<-",
+              "geneSelectionFun<-", print, show, updateGenes, genes, numGenes,
+              geneScore, sigGenes, numSigGenes, usedGO, attrInTerm, genesInTerm,
+              scoresInTerm, countGenesInTerm, termStat, "updateTerm<-",
+              allMembers, Name, members, testStatistic, "Name<-", "allMembers<-",
+              "members<-", numMembers, numAllMembers, runTest, "sigMembers<-",
+              sigAllMembers, numSigAll, sigMembers, numSigMembers, contTable, allScore,
+              membersScore, "score<-", rankMembers, pType, "pType<-",
+              membersExpr, getSigGroups, elim, cutOff, "elim<-", "cutOff<-", updateGroup,
+              "Weights<-", Weights, "sigRatio<-", getSigRatio, score, testName, algorithm,
+              geneData, "geneData<-", "score<-", "testName<-", "algorithm<-",
+              printGenes, penalise, scoreOrder, testStatPar, printGraph, GenTable,
+              GOFisherTest, GOKSTest, GOtTest, GOglobalTest,
+              GOSumTest, GOKSTiesTest,
+              joinFun, allParents, depth, "depth<-",
+              expressionMatrix, phenotype)
+
+export(annFUN.db, annFUN, annFUN.gene2GO, annFUN.GO2genes, annFUN.org, annFUN.file,
+       combineResults, readMappings, inverseList, whichAlgorithms, whichTests,
+       GOplot, showSigOfNodes, getPvalues, showGroupDensity,
+       reverseArch, nodesInInducedGraph, inducedGraph, buildLevels,
+       getNoOfLevels, getGraphRoot,
+       permSumStats, permSumStats.all,
+       groupGOTerms, .genesInNode, .countsInNode)
