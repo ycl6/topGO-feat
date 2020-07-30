@@ -299,7 +299,7 @@ former method are lower bounded by the $p$-values returned by the later method.
 The easiest way to visualize this property is to scatter plot the two sets of $p$-values against each other. 
 
 
-<<echo = FALSE>>=
+<<>>=
 colMap <- function(x) {
   .col <- rep(rev(heat.colors(length(unique(x)))), time = table(x))
   return(.col[match(1:length(x), order(x))])
