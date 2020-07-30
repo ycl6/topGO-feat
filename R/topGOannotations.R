@@ -57,9 +57,9 @@ annFUN.db <- function(whichOnto, feasibleGenes = NULL, affyLib) {
 
   orgFile <- get(paste(get(paste(affyLib, "ORGPKG", sep = "")), "_dbfile", sep = ""))
   
-  try(dbGetQuery(get(paste(affyLib, "dbconn", sep = "_"))(),
+  suppressWarnings(try(dbGetQuery(get(paste(affyLib, "dbconn", sep = "_"))(),
                  paste("ATTACH '", orgFile(), "' as org;", sep ="")),
-      silent = TRUE)
+      silent = TRUE))
   
   .sql <- paste("SELECT DISTINCT probe_id, go_id FROM probes INNER JOIN ",
                 "(SELECT * FROM org.genes INNER JOIN org.go_",
