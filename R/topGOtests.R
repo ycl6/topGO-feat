@@ -90,7 +90,8 @@ setMethod("GOglobalTest", "classicExpr",
             if(numMembers(object) == 0)
               return(1)
 
-            return(globaltest::p.value(globaltest:::globaltest(X = membersExpr(object), Y = pType(object))))
+            requireNamespace('globaltest', quietly = TRUE)
+	    return(globaltest::p.value(globaltest::gt(X = membersExpr(object), Y = pType(object))))
           })
 
 
@@ -110,8 +111,8 @@ permSumStats <- function(object, N) {
   ## update the look-up table with the feasible sizes
   sizeLookUp[goSize] <- 1:length(goSize)
 
-  assign(".PERMSUM.LOOKUP", sizeLookUp, .GlobalEnv)
-  assign(".PERMSUM.MAT", sapply(1:N, function(x) cumsum(sample(scoreVec, maxSample))[goSize]), .GlobalEnv)
+  assign(".PERMSUM.LOOKUP", sizeLookUp, envir = as.environment(pos = 1L))
+  assign(".PERMSUM.MAT", sapply(1:N, function(x) cumsum(sample(scoreVec, maxSample))[goSize]), envir = as.environment(pos = 1L))
 }
 
 ## same as above just doesn't remove any term
@@ -127,8 +128,8 @@ permSumStats.all <- function(object, N) {
   ## update the look-up table with the feasible sizes
   sizeLookUp[goSize] <- 1:length(goSize)
 
-  assign(".PERMSUM.LOOKUP", sizeLookUp, .GlobalEnv)
-  assign(".PERMSUM.MAT", sapply(1:N, function(x) cumsum(sample(scoreVec))[goSize]), .GlobalEnv)
+  assign(".PERMSUM.LOOKUP", sizeLookUp, envir = as.environment(pos = 1L))
+  assign(".PERMSUM.MAT", sapply(1:N, function(x) cumsum(sample(scoreVec))[goSize]), envir = as.environment(pos = 1L))
 }
 
 
