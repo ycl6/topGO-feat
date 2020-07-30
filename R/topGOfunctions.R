@@ -313,14 +313,14 @@ getPvalues <- function(edata, classlabel, test = "t",
                        correction = c("none", "Bonferroni", "Holm", "Hochberg",
                          "SidakSS", "SidakSD", "BH", "BY")[8]) {
 
-  require('multtest') || stop('package multtest is required')
+  requireNamespace('multtest', quietly = TRUE) || stop('package multtest is required')
 
   ## restrict the dataset
   if(!is.null(genesID))
     edata <- edata[intersect(genesID, rownames(edata)), ]
   genesID <- rownames(edata)
 
-  t.stats <- mt.teststat(edata, classlabel = classlabel, test = test)
+  t.stats <- multtest::mt.teststat(edata, classlabel = classlabel, test = test)
 
   if (alternative == "less")
     p.values <- pt(t.stats, df = length(classlabel) - 2)
@@ -330,7 +330,7 @@ getPvalues <- function(edata, classlabel, test = "t",
     p.values <- 2 * pt(-abs(t.stats), df = length(classlabel) - 2)
 
   if(correction != "none") {
-    p.values <- mt.rawp2adjp(p.values, correction)
+    p.values <- multtest::mt.rawp2adjp(p.values, correction)
     p.values <- p.values$adjp[order(p.values$index), correction]
   }
   names(p.values) <- genesID

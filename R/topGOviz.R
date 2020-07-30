@@ -115,7 +115,7 @@ GOplot <- function(dag, sigNodes, dag.name = 'GO terms', edgeTypes = T,
     sigNodeInd = FALSE
   
   ## we set the global Graphviz attributes
-  graphAttrs <- getDefaultAttrs(layoutType = 'dot')
+  graphAttrs <- Rgraphviz::getDefaultAttrs(layoutType = 'dot')
   graphAttrs$cluster <- NULL
 
   #graphAttrs$graph$splines <- FALSE
@@ -217,7 +217,7 @@ GOplot <- function(dag, sigNodes, dag.name = 'GO terms', edgeTypes = T,
 
   ##plot(dag, attrs = graphAttrs, nodeAttrs = nodeAttrs, edgeAttrs = edgeAttrs)
 
-  return(agopen(graph = dag, name = dag.name, attrs = graphAttrs,
+  return(Rgraphviz::agopen(graph = dag, name = dag.name, attrs = graphAttrs,
                 nodeAttrs = nodeAttrs,  edgeAttrs = edgeAttrs))
 }
 
@@ -293,7 +293,7 @@ GOplot.counts <- function(dag, wantedNodes, dag.name = 'GO terms',
   
 
   ## we set the global Graphviz attributes
-  graphAttrs <- getDefaultAttrs(layoutType = 'dot')
+  graphAttrs <- Rgraphviz::getDefaultAttrs(layoutType = 'dot')
   graphAttrs$cluster <- NULL
 
   ## set the fontsize for the nodes labels
@@ -325,7 +325,7 @@ GOplot.counts <- function(dag, wantedNodes, dag.name = 'GO terms',
       #edgeAttrs$color <- ifelse(.getEdgeWeights(dag) == 0, 'black', 'red')
       edgeAttrs$color <- ifelse(.getEdgeWeights(dag) == 0, 'black', 'black')
   
-  dagLayout <- agopen(graph = dag, name = dag.name, attrs = graphAttrs,
+  dagLayout <- Rgraphviz::agopen(graph = dag, name = dag.name, attrs = graphAttrs,
                       nodeAttrs = nodeAttrs,  edgeAttrs = edgeAttrs)
   
   plotSigChart(dagLayout, nodeCounts, wantedNodes)
@@ -351,7 +351,7 @@ showSigOfNodes <- function(GOdata, termsP.value, firstSigNodes = 10, reverse = T
                            useInfo = c('none', 'pval', 'counts', 'def', 'np', 'all')[1],
                            plotFunction = GOplot, .NO.CHAR = 20) {
 
-  require('Rgraphviz') || stop('package Rgraphviz is required')
+  requireNamespace('Rgraphviz', quietly = TRUE) || stop('package Rgraphviz is required')
 
   if(!is.null(firstSigNodes)) 
     sigTerms <- sort(termsP.value)[1:firstSigNodes]
@@ -468,7 +468,7 @@ printDOT <- function(dag, sigNodes = NULL, genNodes = NULL, wantedNodes = NULL,
                      nodeInfo = NULL, export.to.dot.file = "MyGraph.dot") {
   
   ## we set the global Graphviz attributes
-  graphAttrs <- getDefaultAttrs(layoutType = 'dot')
+  graphAttrs <- Rgraphviz::getDefaultAttrs(layoutType = 'dot')
   graphAttrs$cluster <- NULL
 
   #graphAttrs$graph$splines <- FALSE

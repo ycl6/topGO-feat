@@ -9,9 +9,10 @@
 }
 
 \usage{
-   getPvalues(edata, classlabel, test = "t", alternative = c("greater", "two.sided", "less")[1],
-   genesID = NULL, correction = c("none", "Bonferroni", "Holm", "Hochberg", "SidakSS", "SidakSD",
-   "BH", "BY")[8]) 
+   getPvalues(edata, classlabel, test = "t", 
+	      alternative = c("greater", "two.sided", "less")[1], genesID = NULL, 
+	      correction = c("none", "Bonferroni", "Holm", "Hochberg", "SidakSS", 
+			     "SidakSD", "BH", "BY")[8]) 
 }
 
 \arguments{
