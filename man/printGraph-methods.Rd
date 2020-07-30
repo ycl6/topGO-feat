@@ -19,7 +19,8 @@
 showSigOfNodes(GOdata, termsP.value, firstSigNodes = 10, reverse = TRUE,
                sigForAll = TRUE, wantedNodes = NULL, putWN = TRUE,
                putCL = 0, type = NULL, showEdges = TRUE,  swPlot = TRUE,
-               useFullNames = TRUE, oldSigNodes = NULL, useInfo = c("none", "pval", "counts", "def", "np", "all")[1],
+               useFullNames = TRUE, oldSigNodes = NULL, 
+               useInfo = c("none", "pval", "counts", "def", "np", "all")[1],
                plotFunction = GOplot, .NO.CHAR = 20)
 
 printGraph(object, result, firstSigNodes, refResult, ...) 
@@ -100,7 +101,8 @@ data(GOdata)
 data(results.tGO)
 
 showSigOfNodes(GOdata, score(resultFisher), firstSigNodes = 5, useInfo = 'all')
-printGraph(GOdata, resultFisher, firstSigNodes = 5, fn.prefix = "sampleFile", useInfo = "all", pdfSW = TRUE)
+printGraph(GOdata, resultFisher, firstSigNodes = 5, fn.prefix = "sampleFile", 
+	   useInfo = "all", pdfSW = TRUE)
 }
 
 }

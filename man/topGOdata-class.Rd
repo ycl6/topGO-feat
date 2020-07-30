@@ -176,7 +176,8 @@ GOdata <- new("topGOdata",
               ontology = "BP",
               allGenes = geneList,
               geneSel = topDiffGenes,
-              description = "GO analysis of ALL data: Differential Expression between B-cell and T-cell",
+              description = "GO analysis of ALL data: Differential Expression between 
+                             B-cell and T-cell",
               annot = annFUN.db,
               affyLib = affyLib)
 
