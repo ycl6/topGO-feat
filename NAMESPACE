@@ -11,6 +11,21 @@ importFrom("stats", "fisher.test", "ks.test", "pt", "t.test")
 importFrom("utils", "read.delim", "write.table")
 importFrom("DBI", "dbGetQuery")
 
+importFrom(ggplot2,ggplot)
+importFrom(ggplot2,aes_string)
+importFrom(ggplot2,geom_bar)
+importFrom(ggplot2,coord_flip)
+importFrom(ggplot2,theme_bw)
+importFrom(ggplot2,scale_fill_continuous)
+importFrom(ggplot2,guides)
+importFrom(ggplot2,guide_colorbar)
+importFrom(ggplot2,theme)
+importFrom(ggplot2,element_text)
+importFrom(ggplot2,margin)
+importFrom(ggplot2,xlab)
+importFrom(ggplot2,ylab)
+importFrom(ggplot2,ggtitle)
+
 exportClasses(topGOdata, topGOresult, groupStats,
               classicCount, classicScore, classicExpr,
               weight01Count, weight01Score, weight01Expr,
@@ -42,4 +57,5 @@ export(annFUN.db, annFUN, annFUN.gene2GO, annFUN.GO2genes, annFUN.org, annFUN.fi
        reverseArch, nodesInInducedGraph, inducedGraph, buildLevels,
        getNoOfLevels, getGraphRoot,
        permSumStats, permSumStats.all,
-       groupGOTerms, .genesInNode, .countsInNode)
+       groupGOTerms, .genesInNode, .countsInNode,
+       enrichment_barplot)

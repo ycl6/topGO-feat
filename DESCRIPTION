@@ -19,6 +19,7 @@ Imports:
     Biobase (>= 2.0.0),
     BiocGenerics (>= 0.13.6),
     DBI,
+    ggplot2,
     GO.db (>= 2.3.0),
     lattice,
     matrixStats,
@@ -41,5 +42,6 @@ Collate:
     'topGOannotations.R'
     'topGOtests.R'
     'topGOviz.R'
+    'plot_enrichment.R'
     'zzz.R'
 biocViews: GO, GeneSetEnrichment, Microarray, Visualization

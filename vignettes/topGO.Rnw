@@ -394,6 +394,31 @@ printGraph(sampleGOdata, resultKS.elim, firstSigNodes = 5, fn.prefix = "tGO", us
 \end{figure}
 \clearpage
 
+Finally, by providing a {\tt topGOdata} object and a {\tt topGOresult} object, 
+we can also visualise the enrichment statistics of a test with a simple bar plot. 
+Figure~\ref{barplotClassicElim} shows the significant gene counts 
+in each top {\tt topNodes} GO terms as bar height 
+and the $p$-values of the selected test as bar color.
+
+<<eval = FALSE>>=
+enrichment_barplot(sampleGOdata, resultKS.elim, showTerms = 20, numChar = 50, 
+		   orderBy = "Scores")
+@
+
+
+\setkeys{Gin}{width=.9\linewidth}
+\begin{figure}[!h]
+  \centering
+<<fig = TRUE, echo = FALSE, width = 11>>=
+enrichment_barplot(sampleGOdata, resultKS.elim, showTerms = 20, numChar = 50, 
+		   orderBy = "Scores")
+@
+\caption{Bar plot showing the significant gene counts ($x$ axis) 
+  of the $20$ most significant terms ($y$ axis) identified by the {\sf elim} algorithm. 
+  The coloring represents the $p$-values ranging from red (most significant) 
+  to blue (least significant).}
+\label{barplotClassicElim}
+\end{figure}
 
 
 \section{Loading genes and annotations data}
