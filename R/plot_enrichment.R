@@ -118,7 +118,7 @@
 ##'                     orderBy = "Scores", y = "Count")
 
 enrichment_barplot <- function(object, result, showTerms = 10, numChar = 40, orderBy = "Scores", 
-			       y = "Count", xlab = NULL, ylab = NULL, title =NULL) {
+			       y = "Count", xlab = NULL, ylab = NULL, title = NULL) {
 
 	# Test results
 	df = .enrichment_prep_df(object, result, showTerms, numChar, orderBy)
@@ -131,22 +131,6 @@ enrichment_barplot <- function(object, result, showTerms = 10, numChar = 40, ord
 	# y-axis can be Count or Ratio
 	if(y != "Ratio") {
 		y <- "Count"
-	}
-
-	if(is.null(xlab)) {
-		xlab <- "Enriched terms"
-	}
-
-	if(is.null(ylab)) {
-		if(y == "Count") {
-			ylab <- "Gene count"
-		} else {
-			ylab <- "Gene ratio"
-		}
-	}
-
-	if(is.null(title)) {
-		title <- "GO Over Representation Analysis"
 	}
 
 	# Define variable mapping
@@ -166,16 +150,26 @@ enrichment_barplot <- function(object, result, showTerms = 10, numChar = 40, ord
 	# Add x-label
 	if(!is.null(xlab)) {
 		p <- p + xlab(xlab)
+	} else {
+                p <- p + xlab("Enriched terms")
 	}
 
 	# Add y-label
 	if(!is.null(ylab)) {
 		p <- p + ylab(ylab)
+	} else {
+		if(y == "Ratio") {
+			p <- p + ylab("Gene ratio")
+		} else {
+			p <- p + ylab("Gene count")
+		}
 	}
 
 	# Add title
 	if(!is.null(title)) {
 		p <- p + ggtitle(title)
+	} else {
+		p <- p + ggtitle("GO Over Representation Analysis")
 	}
         
 	return(p)
